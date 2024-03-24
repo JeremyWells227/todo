@@ -12,7 +12,8 @@ class Todo {
 		this.description = description;
 		this.dueDate = dueDate;
 		this.priority = priority;
-		this.state = Todo.OPEN
+		this.state = this.constructor.OPEN;
+		this.expanded = false;
 	}
 
 
@@ -24,13 +25,15 @@ class Todo {
 		this.title = s
 	}
 
-
-
-	static {
-		const OPEN = "OPEN";
-		const SCHED = "SCHEDULED"
-		const DONE = "DONE"
+	toggleExpanded() {
+		this.expanded=!this.expanded;
 	}
+
+
+
+	static OPEN = "OPEN";
+	static SCHED = "SCHEDULED";
+	static DONE = "DONE";
 
 
 }

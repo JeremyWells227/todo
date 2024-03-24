@@ -13,11 +13,9 @@ body {
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: stretch;
-
-	z-index: 1;
-
 	height: 100vh;
 	width: 100%;
+	gap: 2px;
 }
 
 #project-control {
@@ -28,16 +26,17 @@ body {
 	min-height: 0;
 	height: 200px;
 	max-height: 25%;
-	background-color: var(--overlay-color);
+	background-color: rgba(73,105,137);
 	color: white;
+	border-radius: 10px;
 }
 #project-control h1 {
 	text-align: center;
 }
 #project-control button {
 	min-width: 0;
-	width: 20%;
-	align-self: flex-start;
+	width: auto;
+	align-self: center;
 	margin: 5px;
 	font-size: 2em;
 	background: none;
@@ -56,10 +55,10 @@ body {
 #projects-wrapper {
 	display: flex;
 	flex-direction: column;
-	background-color: var(--sidebar-color);
 	min-width: 200px;
+	width: auto;
 	max-width: 40%;
-	gap: 10px;
+	gap: 2px;
 
 }
 
@@ -67,9 +66,17 @@ body {
 	flex-direction: column;
 	background-color: var(--sidebar-color);
 	min-width: 200px;
-	max-width: 40%;
+	width: auto;
+	max-width: 100%;
+	height: 100%;
+	margin: 0;
+	background-color: var(--sidebar-color);
+	border-radius: 10px;
 }
 #projects ul{
+	margin-left: 3px;
+	padding-inline-start: 0;
+	gap: 10px;
 	list-style: none;
 	display: flex;
 	flex-direction: column;
@@ -77,71 +84,292 @@ body {
 	max-width: 100%;
 }
 #projects ul li{
-	margin: 0;
-	width: 100%;
+	margin: auto;
+	padding: 0;
+	width: auto;
 	display: flex;
 	flex-direction: row;
-	align-content: space-between;
-	justify-items: stretch;
+	justify-content: space-evenly;
+	color: white;
+	width: 100%;
+}
+#projects ul li span {
+	min-width: 0 ;
+	width: auto;
+	max-width: 35%;
+	flex-grow: 0;
+	flex-shrink: 1;
+
 }
 
-#projects ul li span{
-	margin: 0;
-	padding-right: 10px;
+.new-todo{
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	background-color: var(--overlay-color);
+	color: white;
+	border: none;
+	border-radius: 5px;
+
+}
+.new-todo:hover{
+	background-color: #597999;
+	transition: background-color 100ms ease-in-out;
+}
+.clear-btn{
+	position: absolute;
+	right: 10px;
+	top: 30px;
+	background-color: var(--overlay-color);
+	color: white;
+	border: none;
+	border-radius: 5px;
+
+}
+.clear-btn:hover{
+	background-color: #597999;
+	transition: background-color 100ms ease-in-out;
 }
 
+
+#projects ul li button{
+	background: none;
+	border: none;
+	border-radius: 5px;
+	margin: 1px;
+	color: white;
+}
+
+#projects ul li button:hover{
+	transition: all 100ms ease-in-out;
+	background-color: var(--modal-color);
+	border-radius: 5px;
+	margin: 1px;
+	color: black;
+}
 
 #curr_project{
 	background-color: var(--project-color);
 	width: 100%;
 	height: 100vh;
-
-
+}
+.todoList{
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 
 
-#modal-wrapper{
-	position: absolute;
+
+
+dialog::backdrop {
 	margin: auto;
-	width: 100%;
-	height: 100vh;
-	z-index: 99;
-	overflow: hidden;
-
-}
-
-.modal .overlay {
-	width: 100vw;
-	height: 100vh;
-	z-index: 100;
-	background-color: var(--overlay-color);
-	overflow: hidden;
+	background-color: rgba(73,105,137,0.6);
 }
 
 .modal {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	position: absolute;
+	opacity: 1.0;
 	margin: auto;
-	z-index: 101;
 	background-color: var(--modal-color);
 	max-width: 50%;
 	max-height: 50%;
-	min-width: 500px;
-	min-height: 500px;
+	width: auto;
+	height: auto;
+	min-width: 10%;
+	min-height: 0;
+
+}
+
+.description-span {
+	flex: 2 2 content;
+
+}
+
+
+.modal h1 { 
+	text-align: center
+
 }
 
 .modalChild{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	font-weight: 800;
+	height: auto;
+	width: auto;
+	opacity: 1.0;
 	margin:0;
 	padding: 0;
+	color: black;
 }
-
-
-#prj-list{ 
+.modal ul {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 20px;
 	list-style: none;
+	z-index: 101;
+	opacity: 1.0
 }
+.modal ul li div {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 10px;
+	z-index: 101;
+	opacity: 1.0
+}
+
+.modal ul li label{
+	opacity: 1.0
+
+}
+
+.modal input {
+	opacity: 1.0;
+	border-radius: 5px;
+	border: 1px solid gray;
+}
+.modal label {
+	opacity: 1.0
+}
+.modal button {
+
+	opacity: 1.0;
+	background-color: var(--modal-color);
+	border: none;
+	max-height: 3em;
+	align-self: flex-end;
+}
+.modal button:hover {
+	opacity: 1.0;
+	background-color: var(--modal-color);
+	border: 3px solid var(--overlay-color);
+}
+
+
 .prj-list-item{ 
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: space-evenly;
 	align-items: center;
+}
+.prj-list-item span:hover{ 
+	cursor: pointer
+}
+
+.todoItem {
+	width: auto;
+	max-width: 80%;
+	display: flex;
+	background-color: var(--modal-color);
+	flex-grow: 4;
+	justify-content: space-around;
+	gap: 5px;
+	border: 1px solid var(--overlay-color);
+	border-radius: 10px;
+}
+.todoItem h2 {
+	margin-left: 10px;
+}
+
+
+.expanded{
+	flex-direction: column;
+
+}
+
+
+
+.todoFiller {
+	min-width: 0;
+	width: 250px;
+	max-width: 80%;
+	flex-grow: 1;
+	flex-shrink: 0;
+
+}
+.todoItem  h1{
+	width: auto;
+	max-width: 80%;
+	display: flex;
+	background-color: var(--modal-color);
+	flex-grow: 4;
+}
+.todoItem button {
+	background: none;
+	border: 1px solid gray;
+
+	align-self: end;
+	margin-bottom: 5px;
+}
+
+.todoItem button:hover{
+	background-color: var(--sidebar-color);
+
+	transition: background-color 100ms ease-in-out;
+}
+
+
+.todoItem button:last-child {
+	margin-right: 5px;
+}
+.todoItem span:last-child {
+	align-self: end;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+
+.expanded-btns{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+
+}
+
+.expanded-btns button{
+	margin: 0;
+	flex-grow: 0.1;
+	align-self: auto;
+
+
+}
+.expanded-btns span{
+	max-width: 20%;
+	align-self: auto;
+	margin: 0 !important;
+	flex-grow: 0.1
+
+
+}
+
+
+.todo-scheduled {
+	background-color: var(--overlay-color);
+	color: white;
+}
+
+.todo-scheduled * {
+	color: white;
+
+}
+.todo-scheduled select {
+	color: black;
+}
+.todo-scheduled select option {
+	color: black;
+}
+
+.todo-done {
+	background-color: #aaaaaa;
 }
 
